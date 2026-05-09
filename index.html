@@ -4,7 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+
     <title>My Library</title>
   </head>
-  <body></body>
+  <body>
+    <header class="header">
+      <h1>My Library</h1>
+      <button class="add-book-btn">Add Book</button>
+    </header>
+
+    <main>
+      <form class="book-form">
+        <input type="text" id="title" placeholder="Title" required />
+
+        <input type="text" id="author" placeholder="Author" required />
+
+        <input type="number" id="pages" placeholder="Pages" required />
+
+        <label>
+          Read
+          <input type="checkbox" id="read" />
+        </label>
+
+        <button type="submit">Add Book</button>
+      </form>
+
+      <section class="books-container">
+        <!-- Books go here -->
+      </section>
+    </main>
+  </body>
 </html>
