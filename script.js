@@ -12,10 +12,41 @@ function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
 
   myLibrary.push(book);
+}
 
-  console.log(book);
-  console.log(myLibrary);
+function displayBooks(myLibrary) {
+  const tbody = document.querySelector(".books-table-body");
+
+  tbody.innerHTML = "";
+
+  for (let i = 0; i < myLibrary.length; i++) {
+    const book = myLibrary[i];
+
+    const row = document.createElement("tr");
+
+    const titleCell = document.createElement("td");
+    titleCell.textContent = book.title;
+
+    const authorCell = document.createElement("td");
+    authorCell.textContent = book.author;
+
+    const pagesCell = document.createElement("td");
+    pagesCell.textContent = book.pages;
+
+    const readCell = document.createElement("td");
+    readCell.textContent = book.read;
+
+    row.appendChild(titleCell);
+    row.appendChild(authorCell);
+    row.appendChild(pagesCell);
+    row.appendChild(readCell);
+
+    tbody.appendChild(row);
+  }
 }
 
 addBookToLibrary("The Hobbit", "Tolkien", 295, false);
-addBookToLibrary("Harry Potter", "J.K Rowling", 500, true);
+
+addBookToLibrary("Harry Potter", "J.K. Rowling", 320, true);
+
+displayBooks(myLibrary);
