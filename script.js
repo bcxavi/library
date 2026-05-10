@@ -45,10 +45,6 @@ function displayBooks(myLibrary) {
   }
 }
 
-addBookToLibrary("The Hobbit", "Tolkien", 295, false);
-
-displayBooks(myLibrary);
-
 const addBookBtn = document.querySelector(".add-book-btn");
 const bookForm = document.querySelector(".book-form");
 
@@ -59,7 +55,12 @@ addBookBtn.addEventListener("click", () => {
 bookForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  // leer inputs
-  // addBookToLibrary(...)
-  // displayBooks(myLibrary)
+  const author = document.getElementById("author").value;
+  const title = document.getElementById("title").value;
+  const pages = document.getElementById("pages").value;
+  const read = document.getElementById("read").checked;
+
+  addBookToLibrary(title, author, pages, read);
+
+  displayBooks(myLibrary);
 });
