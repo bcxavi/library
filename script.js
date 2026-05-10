@@ -8,6 +8,10 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+Book.prototype.toggleRead = function () {
+  this.read = !this.read;
+};
+
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
 
@@ -43,7 +47,7 @@ function displayBooks(myLibrary) {
     const deleteCell = document.createElement("td");
 
     const deleteButton = document.createElement("button");
-
+    deleteButton.classList.add("delete-btn");
     deleteButton.textContent = "Delete";
 
     deleteButton.dataset.id = book.id;
@@ -54,6 +58,22 @@ function displayBooks(myLibrary) {
 
     deleteCell.appendChild(deleteButton);
 
+    const toggleButton = document.createElement("button");
+    toggleButton.classList.add("toggle-btn");
+    if (book.read) {
+      toggleButton.textContent = "Mark as Unread";
+    } else {
+      toggleButton.textContent = "Mark as Read";
+    }
+
+    deleteCell.appendChild(toggleButton);
+
+    toggleButton.addEventListener("click", () => {
+      book.toggleRead();
+
+      displayBooks(myLibrary);
+    });
+
     row.appendChild(titleCell);
     row.appendChild(authorCell);
     row.appendChild(pagesCell);
@@ -61,8 +81,6 @@ function displayBooks(myLibrary) {
     row.appendChild(deleteCell);
 
     tbody.appendChild(row);
-
-    bookForm.reset();
   }
 }
 
@@ -84,10 +102,14 @@ bookForm.addEventListener("submit", (event) => {
   addBookToLibrary(title, author, pages, read);
 
   displayBooks(myLibrary);
+
+  bookForm.reset();
 });
 
 function deleteBook(bookId) {
   const bookIndex = myLibrary.findIndex((book) => book.id === bookId);
+
+  if (bookIndex === -1) return;
 
   myLibrary.splice(bookIndex, 1);
 

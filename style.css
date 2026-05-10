@@ -44,18 +44,18 @@ main {
 }
 
 .book-form {
+  display: none;
+
   max-width: 400px;
   margin: 0 auto 32px;
   padding: 24px;
 
-  display: flex;
   flex-direction: column;
   gap: 12px;
 
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  display: none;
 }
 
 .book-form.show {
@@ -93,14 +93,22 @@ thead {
 
 th,
 td {
-  padding: 16px;
+  padding: 14px 16px;
   text-align: left;
+  vertical-align: middle;
 }
 
 th {
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+td:last-child {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  white-space: nowrap;
 }
 
 tbody tr {
@@ -114,21 +122,35 @@ tbody tr:last-child {
 tbody tr:hover {
   background: #f9fafb;
 }
-
 td button {
   padding: 8px 14px;
   border: none;
   border-radius: 8px;
 
-  background: #dc2626;
   color: white;
-
   font-weight: 600;
   cursor: pointer;
 
   transition: background 0.2s ease;
 }
 
-td button:hover {
+/* DELETE */
+
+.delete-btn {
+  background: #dc2626;
+}
+
+.delete-btn:hover {
   background: #b91c1c;
+}
+
+/* TOGGLE */
+
+.toggle-btn {
+  background: #2563eb;
+  margin-left: 8px;
+}
+
+.toggle-btn:hover {
+  background: #1d4ed8;
 }
