@@ -46,6 +46,12 @@ function displayBooks(myLibrary) {
 
     deleteButton.textContent = "Delete";
 
+    deleteButton.dataset.id = book.id;
+
+    deleteButton.addEventListener("click", () => {
+      deleteBook(book.id);
+    });
+
     deleteCell.appendChild(deleteButton);
 
     row.appendChild(titleCell);
@@ -55,6 +61,8 @@ function displayBooks(myLibrary) {
     row.appendChild(deleteCell);
 
     tbody.appendChild(row);
+
+    bookForm.reset();
   }
 }
 
@@ -77,3 +85,11 @@ bookForm.addEventListener("submit", (event) => {
 
   displayBooks(myLibrary);
 });
+
+function deleteBook(bookId) {
+  const bookIndex = myLibrary.findIndex((book) => book.id === bookId);
+
+  myLibrary.splice(bookIndex, 1);
+
+  displayBooks(myLibrary);
+}
