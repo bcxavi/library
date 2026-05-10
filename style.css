@@ -114,3 +114,21 @@ tbody tr:last-child {
 tbody tr:hover {
   background: #f9fafb;
 }
+
+td button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+
+  background: #dc2626;
+  color: white;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+td button:hover {
+  background: #b91c1c;
+}

@@ -34,12 +34,25 @@ function displayBooks(myLibrary) {
     pagesCell.textContent = book.pages;
 
     const readCell = document.createElement("td");
-    readCell.textContent = book.read;
+    if (book.read) {
+      readCell.textContent = "Yes";
+    } else {
+      readCell.textContent = "No";
+    }
+
+    const deleteCell = document.createElement("td");
+
+    const deleteButton = document.createElement("button");
+
+    deleteButton.textContent = "Delete";
+
+    deleteCell.appendChild(deleteButton);
 
     row.appendChild(titleCell);
     row.appendChild(authorCell);
     row.appendChild(pagesCell);
     row.appendChild(readCell);
+    row.appendChild(deleteCell);
 
     tbody.appendChild(row);
   }
