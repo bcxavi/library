@@ -47,6 +47,19 @@ function displayBooks(myLibrary) {
 
 addBookToLibrary("The Hobbit", "Tolkien", 295, false);
 
-addBookToLibrary("Harry Potter", "J.K. Rowling", 320, true);
-
 displayBooks(myLibrary);
+
+const addBookBtn = document.querySelector(".add-book-btn");
+const bookForm = document.querySelector(".book-form");
+
+addBookBtn.addEventListener("click", () => {
+  bookForm.classList.toggle("show");
+});
+
+bookForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  // leer inputs
+  // addBookToLibrary(...)
+  // displayBooks(myLibrary)
+});

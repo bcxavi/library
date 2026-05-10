@@ -55,7 +55,13 @@ main {
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  display: none;
 }
+
+.book-form.show {
+  display: flex;
+}
+
 .book-form input {
   padding: 12px;
   border: 1px solid #d1d5db;
