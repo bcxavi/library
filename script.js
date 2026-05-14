@@ -44,19 +44,17 @@ function displayBooks(myLibrary) {
       readCell.textContent = "No";
     }
 
-    const deleteCell = document.createElement("td");
+    const actionCell = document.createElement("td");
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete-btn");
     deleteButton.textContent = "Delete";
 
-    deleteButton.dataset.id = book.id;
-
     deleteButton.addEventListener("click", () => {
       deleteBook(book.id);
     });
 
-    deleteCell.appendChild(deleteButton);
+    actionCell.appendChild(deleteButton);
 
     const toggleButton = document.createElement("button");
     toggleButton.classList.add("toggle-btn");
@@ -66,7 +64,7 @@ function displayBooks(myLibrary) {
       toggleButton.textContent = "Mark as Read";
     }
 
-    deleteCell.appendChild(toggleButton);
+    actionCell.appendChild(toggleButton);
 
     toggleButton.addEventListener("click", () => {
       book.toggleRead();
@@ -78,7 +76,7 @@ function displayBooks(myLibrary) {
     row.appendChild(authorCell);
     row.appendChild(pagesCell);
     row.appendChild(readCell);
-    row.appendChild(deleteCell);
+    row.appendChild(actionCell);
 
     tbody.appendChild(row);
   }
