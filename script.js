@@ -1,20 +1,20 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.id = crypto.randomUUID();
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  toggleRead() {
+    this.read = !this.read;
+  }
 }
 
-Book.prototype.toggleRead = function () {
-  this.read = !this.read;
-};
-
-function addBookToLibrary(title, author, pages, read) {
-  const book = new Book(title, author, pages, read);
-
+function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
@@ -96,9 +96,9 @@ bookForm.addEventListener("submit", (event) => {
   const title = document.getElementById("title").value;
   const pages = document.getElementById("pages").value;
   const read = document.getElementById("read").checked;
+  const book = new Book(title, author, pages, read);
 
-  addBookToLibrary(title, author, pages, read);
-
+  addBookToLibrary(book);
   displayBooks(myLibrary);
 
   bookForm.reset();
